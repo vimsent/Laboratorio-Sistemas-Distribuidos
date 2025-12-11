@@ -1,0 +1,46 @@
+// Especifica la versión de la sintaxis de Protocol Buffers.
+syntax = "proto3";
+
+// Define el paquete de Go que se generará. Evita colisiones de nombres.
+option go_package = "./grpc/proto;proto";
+
+// El servicio define un conjunto de funciones remotas.
+service LesterService {
+  rpc MichaelOffer (MichaelRequest) returns (MichaelResponse);
+}
+
+service TrevorService {
+  rpc Distraccion (TrevorRequest) returns (TrevorResponse);
+}
+service FranklinService {
+  rpc Distraccion (FranklinRequest) returns (FranklinResponse);
+}
+
+message MichaelRequest {
+  string offer = 1;
+}
+
+message MichaelResponse {
+  uint64 botin = 1;
+  int32 pFranklin = 2;
+  int32 pTrevor = 3;
+  int32 rPolicial = 4;
+  string pOferta = 5;
+}
+
+message TrevorRequest {
+  string notificar = 1;
+  int32 pTrevor = 2;
+}
+
+message TrevorResponse {
+  string resultado = 1;
+}
+message FranklinRequest {
+  string notificar = 1;
+  int32 pFranklin = 2;
+}
+
+message FranklinResponse {
+  string resultado = 1;
+}
