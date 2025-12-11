@@ -7,13 +7,22 @@ option go_package = "./grpc/proto;proto";
 // El servicio define un conjunto de funciones remotas.
 service LesterService {
   rpc MichaelOffer (MichaelRequest) returns (MichaelResponse);
+  rpc IniciarNotificaciones (NotificacionRequest) returns (NotificacionResponse);
+  rpc DetenerNotificaciones (DetenerRequest) returns (DetenerResponse);
 }
 
 service TrevorService {
   rpc Distraccion (TrevorRequest) returns (TrevorResponse);
+  rpc IniciarGolpe (GolpeRequest) returns (GolpeResponse);
+  rpc ConsultarEstrellas (EstrellasRequest) returns (EstrellasResponse);
+  rpc ObtenerBotin (BotinRequest) returns (BotinResponse);
 }
+
 service FranklinService {
   rpc Distraccion (FranklinRequest) returns (FranklinResponse);
+  rpc IniciarGolpe (GolpeRequest) returns (GolpeResponse);
+  rpc ConsultarEstrellas (EstrellasRequest) returns (EstrellasResponse);
+  rpc ObtenerBotin (BotinRequest) returns (BotinResponse);
 }
 
 message MichaelRequest {
@@ -36,6 +45,7 @@ message TrevorRequest {
 message TrevorResponse {
   string resultado = 1;
 }
+
 message FranklinRequest {
   string notificar = 1;
   int32 pFranklin = 2;
@@ -43,4 +53,51 @@ message FranklinRequest {
 
 message FranklinResponse {
   string resultado = 1;
+}
+
+// Nuevos mensajes para Fase 3
+message GolpeRequest {
+  string personaje = 1;
+  int32 probabilidad = 2;
+  int32 riesgoPolicial = 3;
+}
+
+message GolpeResponse {
+  bool exito = 1;
+  string motivoFallo = 2;
+  int64 botinExtra = 3;
+  int32 estrellasFinales = 4;
+}
+
+message EstrellasRequest {
+  string personaje = 1;
+}
+
+message EstrellasResponse {
+  int32 estrellas = 1;
+}
+
+message NotificacionRequest {
+  string personaje = 1;
+  int32 riesgoPolicial = 2;
+}
+
+message NotificacionResponse {
+  bool iniciado = 1;
+}
+
+message DetenerRequest {
+  string personaje = 1;
+}
+
+message DetenerResponse {
+  bool detenido = 1;
+}
+
+message BotinRequest {
+  string personaje = 1;
+}
+
+message BotinResponse {
+  int64 botinTotal = 1;
 }
